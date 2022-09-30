@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <a href="http://localhost:3000/"><button>Home Page</button></a>
+    <a href="http://localhost:3000/Admin"><button>Back</button></a>
+
+    <br />
+    <br />
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <% if (messages.success) { %>
+    <p class="alert alert-success mt-4"><%- messages.success %></p>
+    <% } %>
+    <br />
+    <h6>Registrants Enrolled in all Activities:</h6>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Full Name</th>
+          <th scope="col">Account ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(rowData.allRegRows.length){ for(var i = 0; i<
+        rowData.allRegRows.length; i++) {%>
+        <tr>
+          <td><%= rowData.allRegRows[i].FullName%></td>
+          <td><%= rowData.allRegRows[i].AccountID%></td>
+        </tr>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <br />
+
+    <h6 style="text-align: Left">Registrants (Adults):</h6>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Account ID</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Service Card Number</th>
+          <th scope="col">Medical Record</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(rowData.allAdultRows.length){ for(var i = 0; i<
+        rowData.allAdultRows.length; i++) {%>
+        <tr>
+          <td><%= rowData.allAdultRows[i].AccountID%></td>
+          <td><%= rowData.allAdultRows[i].FullName%></td>
+          <td><%= rowData.allAdultRows[i].ServiceCardNumber%></td>
+          <td><%= rowData.allAdultRows[i].MedicalRecord%></td>
+          <td><%= rowData.allAdultRows[i].Phone%></td>
+          <td><%= rowData.allAdultRows[i].Email%></td>
+          <td><%= rowData.allAdultRows[i].Address%></td>
+        </tr>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <br />
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <a href="http://localhost:3000/"><button>Home Page</button></a>
+    <a href="http://localhost:3000/Registrant"><button>Back</button></a>
+    <a href="http://localhost:3000/MyWaivers"><button>My Waivers</button></a>
+    <title>Activities</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <% if (messages.success) { %>
+    <p class="alert alert-success mt-4"><%- messages.success %></p>
+    <% } %>
+
+    <p>View, enroll and drop activities</p>
+    <p>Enter your 6 digit account ID</p>
+
+    <form action="/MyActivities" method="post">
+      <input
+        id="AccID"
+        type="text"
+        name="AccID_input"
+        placeholder="Account ID"
+      /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">AccountID</th>
+          <th scope="col">ActivityName</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
+        <tr>
+          <td><%= data[i].AccountID%></td>
+          <td><%= data[i].ActivityName%></td>
+        </tr>
+        <form action="/MyActivities" method="post">
+          <tr>
+            <td>
+              <input
+                id="editTextInput"
+                type="text"
+                name="newActivity"
+                placeholder="Add New Activity"
+              />
+              <input
+                id="deleteTextInput"
+                type="text"
+                name="deleteActivity"
+                placeholder="Remove Activity"
+              />
+            </td>
+            <td>
+              <input
+                name="AccID_input"
+                value="<%= data[i].AccountID %>"
+                style="display: none"
+              />
+            </td>
+            <td>
+              <input type="submit" value="Submit" />
+            </td>
+          </tr>
+        </form>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

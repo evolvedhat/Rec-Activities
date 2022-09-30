@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <a href="http://localhost:3000/"><button>Home Page</button></a>
+    <a href="http://localhost:3000/Instructor"><button>Back</button></a>
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <title>Activity Locations</title>
+    <br /><br />
+    <% if (messages.success) { %>
+    <p class="alert alert-success mt-4"><%- messages.success %></p>
+    <% } %>
+    <br />
+
+    <h4 style="text-align: center">Indoor</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Activity Name</th>
+          <th scope="col">Room Number</th>
+          <th scope="col">Building Name</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(rowData.indoorRows.length){ for(var i = 0; i<
+        rowData.indoorRows.length; i++) {%>
+        <tr>
+          <td><%= rowData.indoorRows[i].ActivityName%></td>
+          <td><%= rowData.indoorRows[i].RoomNumber%></td>
+          <td><%= rowData.indoorRows[i].BuildingName%></td>
+          <td><%= rowData.indoorRows[i].Address%></td>
+        </tr>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <br />
+
+    <h4 style="text-align: center">Outdoor</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Activity Name</th>
+          <th scope="col">Field Number</th>
+          <th scope="col">Field Name</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(rowData.outdoorRows.length){ for(var i = 0; i<
+        rowData.outdoorRows.length; i++) {%>
+        <tr>
+          <td><%= rowData.outdoorRows[i].ActivityName%></td>
+          <td><%= rowData.outdoorRows[i].FieldNumber%></td>
+          <td><%= rowData.outdoorRows[i].FieldName%></td>
+          <td><%= rowData.outdoorRows[i].Address%></td>
+        </tr>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <br />
+  </body>
+</html>

@@ -1,0 +1,16 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  overflow-y: scroll; /* Show vertical scrollbar */
+  overflow-x: scroll; /* Show horizontal scrollbar */
+}
+
+a {
+  color: #00b7ff;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <title>Instructor</title>
+
+    <a href="http://localhost:3000/"><button>Home Page</button></a>
+    <a href="http://localhost:3000/Locations"
+      ><button>Activity Locations</button></a
+    >
+    <a href="http://localhost:3000/Equipments"
+      ><button>Equipments Inventory</button></a
+    >
+    <a href="http://localhost:3000/Certifications"
+      ><button>My Certifications</button></a
+    >
+    <br />
+    <br />
+    <p>You are logged in as an instructor</p>
+
+    <p>Enter your 6 digit account ID</p>
+
+    <form action="/Instructor" method="post">
+      <input
+        id="AccID"
+        type="text"
+        name="AccID_input"
+        placeholder="Account ID"
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">AccountID</th>
+          <th scope="col">Instructor</th>
+          <th scope="col">Supervisor</th>
+          <th scope="col">Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
+        <tr>
+          <td><%= data[i].AccountID%></td>
+          <td><%= data[i].FullName%></td>
+          <td><%= data[i].SupFullName%></td>
+          <td><%= data[i].Department%></td>
+        </tr>
+
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

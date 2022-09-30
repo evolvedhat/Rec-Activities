@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <a href="http://localhost:3000/"><button>Home Page</button></a>
+    <a href="http://localhost:3000/MyActivities"
+      ><button>View Activities</button></a
+    >
+    <a href="http://localhost:3000/Parking"><button>Parking</button></a>
+    <title>Registrant</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <% if (messages.success) { %>
+    <p class="alert alert-success mt-4"><%- messages.success %></p>
+    <% } %>
+    <br /><br />
+    <p>You are logged in as a registrant</p>
+
+    <p>
+      Only adults are able to update their information. Minor's information can
+      be updated by admin.
+    </p>
+    <br />
+    <p>Enter your 6 digit account ID</p>
+
+    <form action="/Registrant" method="post">
+      <input
+        id="AccID"
+        type="text"
+        name="AccID_input"
+        placeholder="Account ID"
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">AccountID</th>
+          <th scope="col">Service Card Number</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Medical Record</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(data.length){ for(var i = 0; i< data.length; i++) {%>
+        <tr>
+          <td><%= data[i].AccountID%></td>
+          <td><%= data[i].ServiceCardNumber%></td>
+          <td><%= data[i].FullName%></td>
+          <td><%= data[i].MedicalRecord%></td>
+          <td><%= data[i].Phone%></td>
+          <td><%= data[i].Email%></td>
+          <td><%= data[i].Address%></td>
+        </tr>
+        <form action="/Registrant" method="post">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <input
+                id="editTextInput"
+                type="text"
+                name="newPhone"
+                placeholder="Enter New Phone"
+              />
+            </td>
+            <td>
+              <input
+                id="editTextInput"
+                type="text"
+                name="newEmail"
+                placeholder="Enter New Email"
+              />
+            </td>
+            <td>
+              <input
+                id="editTextInput"
+                type="text"
+                name="newAddress"
+                placeholder="Enter New Address"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <input
+                name="AccID_input"
+                value="<%= data[i].AccountID %>"
+                style="display: none"
+              />
+            </td>
+            <td>
+              <input type="submit" value="Update" />
+            </td>
+          </tr>
+        </form>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

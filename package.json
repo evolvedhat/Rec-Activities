@@ -1,0 +1,30 @@
+{
+  "name": "rec",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "prettier": "prettier --write .",
+    "nm": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^5.3.0",
+    "http-errors": "~1.6.3",
+    "jquery": "^3.6.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "mysql2-promise": "^0.1.4",
+    "sass": "^1.53.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  }
+}

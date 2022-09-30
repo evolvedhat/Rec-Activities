@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <title>Welcome!</title>
+    <h1 style="text-align: center">Recreational Activities</h1>
+    <br />
+    <p>View activities and details:</p>
+    <a href="http://localhost:3000/Activities"><button>Activities</button></a>
+    <br /><br />
+    <p>Login as:</p>
+    <a style="display: inline-block" href="http://localhost:3000/Registrant"
+      ><button>Registrant</button></a
+    >
+    <a style="display: inline-block" href="http://localhost:3000/Instructor"
+      ><button>Instructor</button></a
+    >
+    <a style="display: inline-block" href="http://localhost:3000/Admin"
+      ><button>Admin</button></a
+    >
+    <br /><br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Number of Total Programs Offered:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(rowData.progRows.length){ for(var i = 0; i<
+        rowData.progRows.length; i++) {%>
+        <tr>
+          <td><%= rowData.progRows[i].Total %></td>
+        </tr>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <br />
+    <h5 style="text-align: left">Options for Affordable Activities!</h5>
+    <h6 style="text-align: left">Programs Offered Less Than $30:</h6>
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Cost in Dollars</th>
+          <th scope="col">Number of Programs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(rowData.costRows.length){ for(var i = 0; i<
+        rowData.costRows.length; i++) {%>
+        <tr>
+          <td><%= rowData.costRows[i].Cost%></td>
+          <td><%= rowData.costRows[i].Programs%></td>
+        </tr>
+        <% } }else{ %>
+        <tr>
+          <td colspan="3">No Data</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
